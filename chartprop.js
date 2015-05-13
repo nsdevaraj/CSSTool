@@ -67,9 +67,10 @@ $(document).ready(function () {
 		}); */
 		//copy to textbox
 		$('#text').css('display', 'block');
-		//console.log(JSON.stringify(sample));
-		$('#preview').html(JSON.stringify(sample, null, 2));
-		$('#json').val(JSON.stringify(sample, null, 10));
+		var json=JSON.stringify(sample,null,10);
+		json=json.replace(/"(\w+)"\s*:/g, '$1:');
+		$('#preview').html(json);
+		$('#json').val(json);
 	});
 
 	//To get color picker for each input
@@ -224,6 +225,7 @@ function chartfunc() {
 				renderTo : 'chartContainer',
 				type : a,
 				backgroundColor : chartvalue.chartbackgroundcolor,
+				plotBackgroundColor : 'transparent'
 			},
 			title : {
 				style : {
@@ -324,6 +326,7 @@ function chartfunc() {
 	sample = {
 		chart : {
 			backgroundColor : chartvalue.chartbackgroundcolor,
+			plotBackgroundColor : 'transparent'
 		},
 		title : {
 			style : {
